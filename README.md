@@ -1,7 +1,7 @@
 # FastPow
 
 This package provides a macro `@fastpow` that can speed up
-the computation of *integer powers* in any block of Julia code
+the computation of *integer powers* in any Julia expression
 by transforming them into *optimal sequences of multiplications*,
 with a slight sacrifice in accuracy compared to Julia's built-in
 `x^n` function.
@@ -11,3 +11,14 @@ squaring](https://en.wikipedia.org/wiki/Exponentiation_by_squaring)
 to first reduce the power to ≤ 255 and then use addition chains.
 
 For example, `@fastpow z^25` requires 6 multiplications, and for `z = 0.73` it gives the correct answer to a relative error of `≈ 1.877e-15` (about 8 [ulps](https://en.wikipedia.org/wiki/Unit_in_the_last_place)), vs. the default `z^25` which gives the correct answer to a relative error of `≈ 6.03e-16` (about 3 ulps).
+
+Note that you can apply the `@fastpow` macro to a whole *block*
+of Julia code at once.  For example,
+```jl
+@fastpow function foo(x,y)
+    z = sin(x)^3 + sqrt(y)
+    return z^7 - 4x^5.3 + 3y^12
+end
+```
+applies the `@fastpow` transformation to *every* literal integer
+exponent (`^3`, `^7`, and `^12`) in the function `foo`.
