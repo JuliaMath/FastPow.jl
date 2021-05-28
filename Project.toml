@@ -1,0 +1,10 @@
+name = "FastPow"
+uuid = "c0e83750-1142-43a8-81cf-6c956b72b4d1"
+version = "0.1.0"
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
