@@ -27,7 +27,7 @@ An alternative to `@fastpow` is to use Julia's built-in
 [`@fastmath`](https://docs.julialang.org/en/v1/base/math/#Base.FastMath.@fastmath) macro, which enables various LLVM optimization
 including, in some cases, faster integer powers using
 repeated multiplication.  The advantages of `@fastpow` are that
-it *guarantees* optimal addition-chain exponentiation, and
+it *guarantees* optimal addition-chain exponentiation
 and that it works for exponentiating *any* Julia type
-(e.g. complex numbers, matrices, …) whereas LLVM will only
+(e.g. complex numbers, matrices, …), whereas LLVM will only
 optimize a small set of hardware numeric types.
