@@ -22,3 +22,12 @@ end
 ```
 applies the `@fastpow` transformation to *every* literal integer
 exponent (`^3`, `^7`, and `^12`) in the function `foo`.
+
+An alternative to `@fastpow` is to use Julia's built-in
+[`@fastmath`](https://docs.julialang.org/en/v1/base/math/#Base.FastMath.@fastmath) macro, which enables various LLVM optimization
+including, in some cases, faster integer powers using
+repeated multiplication.  The advantages of `@fastpow` are that
+it *guarantees* optimal addition-chain exponentiation, and
+and that it works for exponentiating *any* Julia type
+(e.g. complex numbers, matrices, …) whereas LLVM will only
+optimize a small set of hardware numeric types.
