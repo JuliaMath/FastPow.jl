@@ -12,7 +12,7 @@ In particular, it uses optimal [addition-chain exponentiation](https://en.wikipe
 squaring](https://en.wikipedia.org/wiki/Exponentiation_by_squaring)
 to first reduce the power to ≤ 255 and then use addition chains.
 
-For example, `@fastpow z^25` requires 6 multiplications, and for `z = 0.73` it gives the correct answer to a relative error of `≈ 1.877e-15` (about 8 [ulps](https://en.wikipedia.org/wiki/Unit_in_the_last_place)), vs. the default `z^25` which gives the correct answer to a relative error of `≈ 6.03e-16` (about 3 ulps).
+For example, `@fastpow z^25` requires 6 multiplications, and for `z = 0.73` it gives the correct answer to a relative error of `≈ 1.877e-15` (about 8 [ulps](https://en.wikipedia.org/wiki/Unit_in_the_last_place)), vs. the default `z^25` which gives the correct answer to a relative error of `≈ 6.03e-16` (about 3 ulps) but is about 10× slower.
 
 Note that you can apply the `@fastpow` macro to a whole *block*
 of Julia code at once.  For example,
