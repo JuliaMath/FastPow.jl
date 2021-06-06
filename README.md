@@ -1,3 +1,5 @@
+[![Build status](https://github.com/JuliaMath/FastPow.jl/workflows/CI/badge.svg)](https://github.com/JuliaMath/FastPow.jl/actions)
+
 # FastPow
 
 This package provides a macro `@fastpow` that can speed up
