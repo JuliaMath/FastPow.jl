@@ -8,3 +8,5 @@ end
 
 @test @fastpow(0.73^25) ≈ big"0.73"^25 rtol=3e-15
 @test @fastpow(0.6^-7) ≈ big"0.6"^-7 rtol=1e-15
+@test @fastpow(0.6^0) === 1.0
+@test @fastpow(0.6^1) === 0.6
