@@ -14,7 +14,7 @@ end
 
 # 2^p
 exp_2(p) = 2^p
-exp_2(n::Integer) = n ≥ 0 ? (1 << n) : Base.throw_domerr_powbysq(2, n)
+exp_2(n::Integer) = n ≥ 0 ? (first(promote(1,n)) << n) : Base.throw_domerr_powbysq(2, n)
 exp_2(p::Union{AbstractFloat,Complex,Rational}) = exp2(p)
 
 # 10^p

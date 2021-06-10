@@ -36,8 +36,8 @@ end
 end
 
 @testset "2^p" begin
-    for p in Int64.(0:65)
-        @test @fastpow(2^p) === 2^p
+    for p in Any[Int64.(0:65); big(100)]
+        @test @fastpow(2^p)::typeof(2^p) == 2^p
     end
     p = -2
     @test_throws DomainError @fastpow(2^p)
