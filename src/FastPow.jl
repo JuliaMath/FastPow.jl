@@ -13,13 +13,13 @@ function fastpow(expr::Expr)
             return :($exp_minus1($(expr.args[3])))
         elseif expr.args[2] === 2
             if expr.args[3] isa Integer && expr.args[3] < 0
-                return :(inv($exp_2($(-expr.args[3]))))
+                return :(exp2($(expr.args[3])))
             else
                 return :($exp_2($(expr.args[3])))
             end
         elseif expr.args[2] === 10
             if expr.args[3] isa Integer && expr.args[3] < 0
-                return :(inv($exp_10($(-expr.args[3]))))
+                return :(exp10($(expr.args[3])))
             else
                 return :($exp_10($(expr.args[3])))
             end

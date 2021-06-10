@@ -41,7 +41,8 @@ end
     end
     p = -2
     @test_throws DomainError @fastpow(2^p)
-    @test @fastpow(2^-2) == 0.25
+    @test @fastpow(2^-2) === 0.25
+    @test @fastpow(2^-100) === 7.888609052210118e-31
     for p in (0.3, -0.5, 4//3, 0.3+4im)
         @test @fastpow(2^p) == exp2(p)
     end
