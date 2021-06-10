@@ -6,7 +6,7 @@ This package provides a macro `@fastpow` that can speed up
 the computation of *integer powers* in any Julia expression
 by transforming them into *optimal sequences of multiplications*,
 with a slight sacrifice in accuracy compared to Julia's built-in
-`x^n` function.
+`x^n` function.   It also optimizes powers of the form `1^p`, `(-1)^p`, `2^p`, and `10^p`.
 
 In particular, it uses optimal [addition-chain exponentiation](https://en.wikipedia.org/wiki/Addition-chain_exponentiation) for (literal) integer powers up to 255, and for larger powers uses [repeated
 squaring](https://en.wikipedia.org/wiki/Exponentiation_by_squaring)
