@@ -7,7 +7,8 @@ exp_1(p::Number) = one(p)
 # (-1)^p:
 exp_minus1(p) = (-1)^p # fallback
 exp_minus1(n::Integer) = isodd(n) ? -1 : 1
-exp_minus1(p::Complex) = exp(-imag(p)*π) * cispi(real(p))
+const _cispi = isdefined(Base, :cispi) ? cispi : (x -> cis(π*x))
+exp_minus1(p::Complex) = exp(-imag(p)*π) * _cispi(real(p))
 if VERSION ≥ v"1.7" # for isodd of non-Integer types (julia#38976)
     _isodd(p) = isodd(p)
 else
