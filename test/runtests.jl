@@ -13,12 +13,15 @@ using FastPow, Test
     @test @fastpow(0.6^1) === 0.6
 end
 
-
+struct DummyType; end
+Base.:^(x::Int, ::DummyType) = "$x^dummy"
+const dummy = DummyType()
 
 @testset "1^p" begin
     for p in (-10,-9,0,9,10,0.2,2//3,0.3+0.4im)
         @test @fastpow(1^p) === one(p)
     end
+    @test @fastpow(1^dummy) == "1^dummy"
 end
 
 @testset "(-1)^p" begin
@@ -33,6 +36,7 @@ end
     end
     z = 0.3 + 0.4im
     @test @fastpow((-1)^z) ≈ (-1)^z ≈ 0.16728929223461353 + 0.23025395732014076im
+    @test @fastpow((-1)^dummy) == "-1^dummy"
 end
 
 @testset "2^p" begin
@@ -46,6 +50,7 @@ end
     for p in (0.3, -0.5, 4//3, 0.3+4im)
         @test @fastpow(2^p) == exp2(p)
     end
+    @test @fastpow(2^dummy) == "2^dummy"
 end
 
 @testset "10^p" begin
@@ -58,4 +63,5 @@ end
     for p in (0.3, -0.5, 4//3, 0.3+4im)
         @test @fastpow(10^p) == exp10(p)
     end
+    @test @fastpow(10^dummy) == "10^dummy"
 end
