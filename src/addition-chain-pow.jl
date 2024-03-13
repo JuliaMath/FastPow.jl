@@ -8,7 +8,7 @@
 #
 # To compute x^q in a minimal number of multiplications
 # for 1 ≤ q ≤ 255, you compute x^r * x^s for
-# r = power_tree[i] and s = i-q, recursively
+# r = power_tree[q] and s = q-r, recursively
 # (memoizing each power computation), and we implicitly
 # define power_tree[0] = 0.
 const power_tree = [
